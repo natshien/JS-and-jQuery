@@ -1,5 +1,5 @@
-$(document).ready(function () {
-    
+$(document).ready(function(){
+
     $(function() {
         function insertBoxes(products){
 
@@ -10,88 +10,83 @@ $(document).ready(function () {
                 dataType: 'json',
             }).done(function(res){
                 // create input boxes
-                var name = res.products[Math.floor(Math.random() * 10)].name;
+                var name = res.products[Math.floor(Math.random() * 10)].name.toLowerCase();
                 console.log(name);
                 var form = $('.inputBoxes');
                 var listLetters = name.split('');
                 console.log(listLetters);
-    
-                listLetters.forEach(char => { return form.append($('<input>')) });
+                
+                // create inputs
+                listLetters.forEach((char, i) => {return form.append($('<input id='+i+'>'))});
                 
                 // allow only letters
-                $("input").on("keyup", function () {
-                    var regex = /^[A-Za-z]/;
-                    if (!$(this).val().match(regex)) {
+                $("input").on("keyup", function(){
+                    var regex = /^[A-Za-z]{1}$/;
+                    if(!$(this).val().match(regex) ) {
                         $(this).val("");
                     }
                 })
 
-                //console.log(form.children());
-                //console.log(form.children(0).value);
-                //console.log(listLetters[0]);
-
                 //validate letters
-                //  option 1
-                //var inputs = document.querySelectorAll("input");
-                //console.log(inputs);
-                //inputs.forEach(function(input){
-                //    console.log(inputs[0]);
-                //    input.addEventListener('onkeyup', () => {
-                //        if(inputs[i].value == listLetters[i]) {
-                //            inputs[i].style("color", "green");
-                //        } else if(inputs[i].value == listLetters.indexOf()){
-                //            inputs[i].style("color", "orange");
-                //        } else {
-                //            input[i].style("color", "red");
-                //        }
-                //    })
-                //    
-                //})
-                //  option 2
-                //$("input").on('keyup', function(){
-                //    console.log(form.children(0).val());
-                //    console.log(listLetters[0]);
-                //    for(var i=0; i <= listLetters.length; i++) {
-                //        if(form.children(i).val() == listLetters[i]) {
-                //            form.children(i).css("color", "green");
-                //        } else if(form.children(i).val() == listLetters.indexOf()){
-                //            form.children(i).css("color", "orange");
-                //        } else {
-                //            form.children(i).css("color", "red");
-                //        }
-                //    }
-                //})                    
+
+                var checkInput = (event, i) => {
+                    var input = event.target;
+                    var value = input.value;
+                   console.log("input: " + input + ", value: " + value);
+                    if(value == listLetters[i]) {
+                        input.style.color = "green";
+                        var id = "#" + input.id;
+                        $(id).after("<div id='new'>"+value+"</div>");
+                    } else if(listLetters.indexOf(value) >= 0){
+                        input.style.color = "orange";
+                    } else {
+                        input.style.color = "red";                   
+                    }
+                };
+
+                var inputs = document.querySelectorAll("input");
+               
+                inputs.forEach((element, i) => {
+                    element.addEventListener("blur", (event) => checkInput(event, i));
+                });
+
                 
-        
-                    
                 
 
+                
+                                          
+            
 
                 // subtract the hints
-                $(".hints").on("click", function () {
+                $(".hints").on("click", function(){
                     var hintsLeft = $(".hintsLeft");
                     var num = parseInt(hintsLeft.text());
-                    hintsLeft.text(num - 1);
+                    hintsLeft.text(num-1);
                     if (hintsLeft.text() <= 0) {
                         hintsLeft.text('0');
                     }
                 })
                 
                 // reset the game
-                $(".reset").on("click", function () {
-                    location.reload();
+                $(".reset").on("click", function() {
+                        location.reload();
                 })
 
                 return form;
     
-            }).fail(function (err) {
+            }).fail(function(err){
                 console.log('Cannot connect with the server');
             });
             
         }
     
-        insertBoxes();
-            
-    });
+            insertBoxes();
 
-});
+    })
+    
+
+           
+            
+})
+
+ 
