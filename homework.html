@@ -6,15 +6,18 @@
     <link rel="stylesheet" href="homework.css">
 </head>
 <body>
-  
-    <h1>Guess the word</h1>
-
+    <div class="intro">
+        <h1>Guess the word</h1>
+        <h3>You have 9 shots for guessing one word</h3>
+        <h4>*In case of troubles you can use 3 hints*</h4>
+    </div>
     <div class="gameField">
-
     <form class="inputBoxes"></form>
+    </div>
+    <div class="gameStatus">
     <button>HINT</button>
-    <div>Chances left: <span class="chances"></span></div>
-
+    <div>Hints left: <span class="hints">3</span></div>
+    <div class="tries">Tries left: <span class="tries"></span>/9</div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

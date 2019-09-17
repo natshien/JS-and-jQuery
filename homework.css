@@ -1,3 +1,23 @@
-font-family {
-    font: Arial,
+body {
+    font-family: Arial, Helvetica, serif;
+}
+
+.intro {
+    text-align: center;
+}
+
+.inputBoxes input{
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin: 3px;
+}
+
+.inputBoxes {
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.gameStatus {
+    margin-left: 50px;
 }

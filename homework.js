@@ -18,15 +18,34 @@ $(document).ready(function () {
                 var listLetters = name.split('');
                 console.log(listLetters);
 
-                listLetters.forEach(char => { return container.append($('<input type="text" pattern="[A-Za-z]{1}">')) });
+                listLetters.forEach(char => { return container.append($('<input type="text">')) });
+                
                 return container;
+                
+                
 
             }).fail(function (err) {
                 console.log('Cannot connect with the server');
             });
         };
 
+        //$(input).on('keyup', function () { 
+        //    if ($(this).val() !== /[^a-z]/gi) {
+        //        $(this).val('');
+        //    }
+        //})
+
         insertBoxes();
+            
     });
+
+    var input = $(input);
+    var regex = /[^a-z]/gi
+
+    input.on('keyup', function (){ 
+        if ($(this).val() !== regex) {
+            $(this).val('');
+        }
+    })
 
 })
