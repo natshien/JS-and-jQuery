@@ -68,7 +68,7 @@ function initialize(res){
 
         // lost
         if (triesLeft.text() == 0) {
-            hints.attr('disabled', true); // !!!!!!!!!!!!!!! WWWWHYYYYYYYYY ????????
+            hints.attr('disabled', true); // !!!!!!!!!!!!!!! WWWWHYYYYYYYYY ??????????????????
         }
 
         var inputsTxt = document.getElementsByTagName("input").value;
@@ -79,8 +79,6 @@ function initialize(res){
 
     }
     
-    
-
 
     // subtract the hints
     $(".hints").on("click", function(event){
@@ -95,12 +93,8 @@ function initialize(res){
         }
     })
     
-
-    // final message 
-    //It should show a message of congratulations if the person guessed correct
-    //It should show a message of try again when the person lost the changes and show the correct word
     
-    //$(".result").text("CONGRATS !").css("color", "red");
+    //$(".result").text("CONGRATS !").css("color", "green");
 
     // reset the game
     $(".reset").on("click", function() {
