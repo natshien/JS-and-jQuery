@@ -6,18 +6,58 @@ body {
     text-align: center;
 }
 
-.inputBoxes input{
-    display: block;
-    width: 25px;
-    height: 25px;
-    margin: 3px;
+.gameField {
+    text-align: center;
+}
+.inputBoxes input {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    text-align: center;
 }
 
 .inputBoxes {
-    margin-left: 50px;
     margin-bottom: 20px;
 }
 
+.correctletters {
+    height: 50px;
+    margin: 50px;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+.correctGuess {
+    width: 30px;
+    height: 30px;
+    border-bottom: 1px solid #666;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+}
+
 .gameStatus {
-    margin-left: 50px;
+    margin: 50px;
+}
+
+.reset {
+    width: 70px;
+    height: 50px;
+    margin-right: 100px;
+    margin-top: -60px;
+    float: right;
+}
+
+.correct {
+    color: green;
+    font-weight: bold;
+}
+
+.almost {
+    color: orange;
+}
+
+.incorrect {
+    color: red;
 }
